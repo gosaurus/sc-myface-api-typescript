@@ -1,24 +1,25 @@
 import { Posts } from './components/Posts';
 import { UserDetails } from './components/UserDetails';
 import { Users } from './components/Users';
-import { BrowserRouter as Router, Routes, Route,/* Link*/ } from 'react-router-dom';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Navpage } from './components/Navpage';
 import './App.scss'
 
 function App() {
-
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Users />}/>
-          <Route path="/users" element={<Users />}/>
-          <Route path="/posts" element={<Posts />}/>
-          <Route path="/users/:userId" element={<UserDetails userId ={58}/>}/>
-        </Routes>
-      </Router>
-    </>
+      <div className="container">
+        <h1>myFace React App</h1>
+        <Router>
+          <Navpage />
+          <Routes>
+            <Route path="/" element={<Posts />}/>
+            <Route path="/users" element={<Users />}/>
+            <Route path="/users/:userId" element={<UserDetails />}/>
+            <Route path="/posts" element={<Posts />}/>
+          </Routes>
+        </Router>
+      </div>
   )
 }
 
-export default App
+export default App;

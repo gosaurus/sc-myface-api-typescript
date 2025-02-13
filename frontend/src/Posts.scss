@@ -2,10 +2,6 @@ $maxWidth: 1000px;
 $textAlign: center;
 $marginAuto: auto;
 
-.container {
-    display: block;
-    margin: $marginAuto;
-}
 .postHeader {
     max-width:$maxWidth;
 }
@@ -20,7 +16,7 @@ $marginAuto: auto;
     display:flex;
     flex-direction:row;
     flex-wrap:wrap;
-    max-width:$maxWidth;
+    max-width: $maxWidth;
     justify-content: center;
 }
 

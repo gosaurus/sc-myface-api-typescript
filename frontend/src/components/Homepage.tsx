@@ -6,8 +6,8 @@ export function Homepage () {
         <div className="container"> 
             <nav>
                 <ul>
-                    <li><Link to="/users">Users</Link></li>
                     <li><Link to="/posts">Posts</Link></li>
+                    <li><Link to="/users">Users</Link></li>
                 </ul>
             </nav>
         </div>

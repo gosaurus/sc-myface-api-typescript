@@ -1,43 +1,32 @@
-import React, { useState, useEffect } from "react";
-import {Posts} from "./Posts";
+import { useState, useEffect } from "react";
+import { Posts } from "./Posts";
+import { useParams } from "react-router-dom";
 
-export function UserDetails(props:{userId:number}) {
-    const [userDetails, setUserDetails] = useState([]);
+interface UserDetails {
+    id:number,
+    name:string,
+    profileImageUrl:string
+}
+export function UserDetails() {
+    const [userDetails, setUserDetails] = useState<UserDetails>();
+    const { userId } = useParams();
 
-useEffect(() => {
-        fetch(`http://localhost:3001/users/${props.userId}`)
-        .then(response => (response.json()))
-        .then(data => setUserDetails(data))
-        .catch(error => console.log('error',error))
-        .finally(() => console.log('Request finished'));
+    useEffect(() => {
+            fetch(`http://localhost:3001/users/${userId}`)
+            .then(response => (response.json()))
+            .then(data => setUserDetails(data))
+            .catch(error => console.log('error',error))
+            .finally(() => console.log('Request finished'));
     }, []);
 
     if (!userDetails) {
         return <div>No user details yet.</div>
     }
-    interface userDetails{
-        id:number,
-        name:string,
-        profileImageUrl:string
-    }
-
     return (
-         <div> 
-            <div className="">
-                <img className="" src="userDetails.coverImageUrl" />
+            <div key={userDetails.id}>
+                <p>{userDetails.name}</p>
+                <img src={userDetails.profileImageUrl} />
+                <Posts /> 
             </div>
-            <div>
-                {
-                    <div className="" key={userDetails.id}>
-                        <p>{userDetails.name}</p>
-                        <img src={userDetails.profileImageUrl} />
-
-                    <div className=""> 
-                      <Posts /> 
-                    </div>
-                    </div>
-                }
-            </div>
-        </div>
     );
 }
