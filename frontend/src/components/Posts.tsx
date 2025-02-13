@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import '../Posts.css';
+import '../Posts.scss';
 
 interface postDataObj {
     id:number,
@@ -21,16 +21,17 @@ useEffect(() => {
         return <div>No posts yet.</div>
     }
     return (
-         <div> 
+         <div className="container"> 
+         <h1>Myface</h1>
             <div className="postHeader">
                 <img className="headerImg" src="https://picsum.photos/id/13/1000/1000" />
             </div>
+            <h2>All posts</h2>
             <div className="postList" >
                 {
                     allPosts.map((post:postDataObj)=> (
                         <div className="postListDet" key={post.id}>
-                            <p>{post.message}</p>
-                            <img className="postImg" src={post.imageUrl} />
+                            <img className="postImg" src={post.imageUrl} /> <p>{post.message}</p>
                         </div>
                     ))
                 } 

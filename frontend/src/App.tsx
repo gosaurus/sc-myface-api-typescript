@@ -3,7 +3,7 @@ import { UserDetails } from './components/UserDetails';
 import { Users } from './components/Users';
 import { BrowserRouter as Router, Routes, Route,/* Link*/ } from 'react-router-dom';
 
-import './App.css'
+import './App.scss'
 
 function App() {
 

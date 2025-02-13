@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import {UserDetails} from './UserDetails';
-import '../Users.css';
+import '../Users.scss';
 
 interface userDataObj {
     id:number,
