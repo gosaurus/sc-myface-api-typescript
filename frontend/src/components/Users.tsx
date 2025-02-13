@@ -1,4 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import {UserDetails} from './UserDetails';
+import '../Users.css';
+
+interface userDataObj {
+    id:number,
+    name:string,
+    profileImageUrl:string,
+}
 
 export function Users() {
     const [allUsers, setAllUsers] = useState([]);
@@ -11,17 +20,27 @@ useEffect(() => {
         .finally(() => console.log('Request finished'));
     },[])
 
+    function displayUser(userId: number){
+        console.log(userId);
+        return (
+            <>
+                <Link to="/users/:userId"></Link>
+             <UserDetails userId = {userId}/>
+             </>
+        )
+    }
     if (!allUsers) {
         return <div>No users yet.</div>
     }
+  
     return (
          <div> 
             <div className="userList" >
                 {
-                    allUsers.map((user)=> (
-                        <div className="" key={user.id}>
+                    allUsers.map((user:userDataObj)=> (
+                        <div className="userListDet" key={user.id}>
                             <p>{user.name}</p>
-                            <img src={user.profileImageUrl} />
+                            <button onClick={()=>displayUser(58)} ><img src={user.profileImageUrl} /></button>
                         </div>
                     ))
                 } 

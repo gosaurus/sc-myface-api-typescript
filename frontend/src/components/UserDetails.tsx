@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {Posts} from "./Posts";
 
-export function UserDetails() {
-    const [userDetails, setUserDetails] = useState({
-
-    });
+export function UserDetails(props:{userId:number}) {
+    const [userDetails, setUserDetails] = useState([]);
 
 useEffect(() => {
-        fetch("http://localhost:3001/users/1")
+        fetch(`http://localhost:3001/users/${props.userId}`)
         .then(response => (response.json()))
         .then(data => setUserDetails(data))
         .catch(error => console.log('error',error))
@@ -17,6 +15,12 @@ useEffect(() => {
     if (!userDetails) {
         return <div>No user details yet.</div>
     }
+    interface userDetails{
+        id:number,
+        name:string,
+        profileImageUrl:string
+    }
+
     return (
          <div> 
             <div className="">
@@ -29,7 +33,7 @@ useEffect(() => {
                         <img src={userDetails.profileImageUrl} />
 
                     <div className=""> 
-                       <Posts />
+                      <Posts /> 
                     </div>
                     </div>
                 }

@@ -26,6 +26,30 @@ export async function getPageOfPosts(page: number, pageSize: number): Promise<Pa
     }
 }
 
+interface PostsFilter {
+    postedById?: number;
+}
+
+export async function getPageOfPostsByUserId(page: number, pageSize: number, filter: PostsFilter): Promise<Page<PostModel>> {
+    const posts = await postRepo.getPostsByUserId(page, pageSize, filter);
+    const postsCount = await postRepo.countPosts();
+
+    // This way of generating a list of post models is VERY inefficient
+    // due to all the DB calls in the toPostModel function.
+    // In total it will be (3N + 1) DB calls (where N is the number of items in page).
+    // A better solution would be to do these joins in the SQL...
+    // but that's quite a lot of effort without support from an ORM...
+    // and we should get away with it for small local databases like ours.
+    const postModels = await Promise.all(posts.map(toPostModel));
+
+    return {
+        results: postModels,
+        next: (page * pageSize) < postsCount ? `/posts/?page=${page + 1}&pageSize=${pageSize}` : null,
+        previous: page > 1 ? `/posts/?page=${page - 1}&pageSize=${pageSize}` : null,
+        total: postsCount,
+    }
+}
+
 export async function createPost(newPost: CreatePostRequest): Promise<void> {
     await postRepo.createPost(newPost);
 }

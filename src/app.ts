@@ -11,8 +11,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors({origin: "http://localhost:5173"}));
 
+app.use('/', postRoutes);
 app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
+//app.use('/posts/:postedById', postRoutes);
 
 app.get('', (request, response) => {
     return response.status(200)

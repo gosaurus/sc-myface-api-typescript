@@ -1,6 +1,6 @@
 import express from "express";
 import {CreatePostRequest} from "../models/api/createPostRequest";
-import {createPost, dislikePost, getPageOfPosts, likePost} from "../services/postService";
+import {createPost, dislikePost, getPageOfPosts, likePost,getPageOfPostsByUserId} from "../services/postService";
 import { body, validationResult } from "express-validator";
 
 const router = express.Router()
@@ -8,8 +8,18 @@ const router = express.Router()
 router.get('/', async (request, response) => {
     const page = request.query.page ? parseInt(request.query.page as string) : 1;
     const pageSize = request.query.pageSize ? parseInt(request.query.pageSize as string) : 10;
-
+    const filter = {postedById:1};
     const postList = await getPageOfPosts(page, pageSize);
+
+    return response.status(200).json(postList);
+});
+
+router.get('/posts/:userId', async (request, response) => {
+    const page = request.query.page ? parseInt(request.query.page as string) : 1;
+    const pageSize = request.query.pageSize ? parseInt(request.query.pageSize as string) : 10;
+    const userId =  parseInt(request.params.userId);
+    const filter = {postedById:userId};
+    const postList = await getPageOfPostsByUserId(page, pageSize, filter);
 
     return response.status(200).json(postList);
 });
@@ -47,5 +57,6 @@ router.post('/:postId/dislike/', async (request, response) => {
     await dislikePost(userId, postId);
     return response.sendStatus(200);
 });
+
 
 export default router;
