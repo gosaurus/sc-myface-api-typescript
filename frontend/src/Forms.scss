@@ -1,0 +1,23 @@
+$marginAuto: auto;
+
+.createForm {
+    margin: $marginAuto;
+    display: flex;
+    max-width: 500px;
+}
+
+input {
+    margin: 10px;
+}
+
+label {
+    display: inline-block;
+    margin: 10px;
+    text-align: right;
+    width: 150px;
+}
+
+button {
+    margin: 20px auto;
+    display: block;
+}

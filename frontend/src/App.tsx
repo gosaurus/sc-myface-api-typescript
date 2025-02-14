@@ -3,6 +3,7 @@ import { UserDetails } from './components/UserDetails';
 import { Users } from './components/Users';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navpage } from './components/Navpage';
+import {CreateUser} from './components/CreateUser';
 import './App.scss'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Posts />}/>
             <Route path="/users" element={<Users />}/>
             <Route path="/users/:userId" element={<UserDetails />}/>
+            <Route path="/createuser" element={<CreateUser />}/>
             <Route path="/posts" element={<Posts />}/>
           </Routes>
         </Router>
