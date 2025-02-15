@@ -28,6 +28,7 @@ export async function getPosts(page: number, pageSize: number, filter: PostsFilt
         .offset((page - 1) * pageSize);
 }
 
+//Error 2339 if this removed
 export async function getPostsByUserId(page: number, pageSize: number, filter: PostsFilter): Promise<Post[]> {
     return getPostsQuery(filter)
         .orderBy('createdAt', 'desc')

@@ -7,6 +7,7 @@ import {CreateUser} from './components/CreateUser';
 import './App.scss'
 
 function App() {
+  
   return (
       <div className="container">
         <h1>myFace React App</h1>
@@ -15,7 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Posts />}/>
             <Route path="/users" element={<Users />}/>
-            <Route path="/users/:Id" element={<UserDetails />}/>
+            <Route path="/users/:userId" element={<UserDetails />}/>
             <Route path="/createuser" element={<CreateUser />}/>
             <Route path="/posts" element={<Posts />}/>
           </Routes>
