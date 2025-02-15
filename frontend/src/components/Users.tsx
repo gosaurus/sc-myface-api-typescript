@@ -1,5 +1,5 @@
 import  { useState, useEffect } from 'react';
-import '../Users.scss';
+import './Users.scss';
 
 interface userDataObj {
     id:number,
@@ -14,7 +14,7 @@ useEffect(() => {
         fetch('http://localhost:3001/users')
         .then(response => (response.json()))
         .then(data => setAllUsers(data.results))
-        .catch(error => console.log('error', error))
+        .catch(error => console.error(error))
         .finally(() => console.log('Request finished'));
     },[])
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import '../Posts.scss';
+import './Posts.scss';
 
 interface postDataObj {
     id:number,
@@ -13,11 +13,11 @@ useEffect(() => {
         fetch("http://localhost:3001/posts")
         .then(response => (response.json()))
         .then(data => setAllPosts(data.results))
-        .catch(error => console.log('error',error))
+        .catch(error => console.error(error))
         .finally(() => console.log('Request finished'));
     },[])
 
-    if (!allPosts) {
+    if (allPosts.length === 0) {
         return <div>No posts yet.</div>
     }
     return (

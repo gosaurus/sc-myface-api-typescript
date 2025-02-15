@@ -1,0 +1,42 @@
+$maxWidth: 1000px;
+$textAlign: center;
+$marginAuto: auto;
+
+.postHeader {
+    max-width:$maxWidth;
+}
+.headerImg {
+    display: block;
+    max-width:500px;
+    max-height:500px;
+    margin: $marginAuto;
+}
+
+.postList {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    max-width: $maxWidth;
+    justify-content: center;
+}
+
+.postListDetail {
+    max-width:200px;
+    margin:5px;
+    padding:5px;
+    text-align: center;
+}
+
+.postImg {
+    max-width:150px;
+    max-height:150px;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: $textAlign;
+}
+
+h2 {
+    text-align: $textAlign;
+}
