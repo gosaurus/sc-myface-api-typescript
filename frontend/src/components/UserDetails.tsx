@@ -34,10 +34,10 @@ export function UserDetails() {
 
 
     useEffect(() => {
-            const id = userId ? parseInt(userId) : 0;
+            //TS error until I put in handling for case that userId is undefined??
+            const id = userId ? parseInt(userId) : console.error("Invalid userId.");
            
-            //This doesn't work when 'userId' passed in
-            fetch("http://localhost:3001/users/1")
+            fetch("http://localhost:3001/users/"+id)
             .then(response => (response.json()))
             .then(data => setUserDetails(data))
             .catch(error => console.error(error))
