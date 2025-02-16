@@ -5,6 +5,7 @@ interface postDataObj {
     id:number,
     message:string,
     imageUrl:string
+    createdAt: string;
 }
 export function Posts() {
     const [allPosts, setAllPosts] = useState([]);
@@ -26,9 +27,10 @@ useEffect(() => {
             <div className="postList" >
                 {
                     allPosts.map((post:postDataObj)=> (
-                        <div className="postListDet" key={post.id}>
+                        <div className="postListDetail" key={post.id}>
                             <img className="postImg" src={post.imageUrl} />
                             <p>{post.message}</p>
+                            <p className="postDate">Posted on: {post.createdAt}</p>
                         </div>
                     ))
                 } 

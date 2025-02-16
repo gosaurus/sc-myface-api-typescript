@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import './Posts.scss';
+import './Users.scss';
+
 interface UserDetails {
     id: number,
     name: string,
@@ -45,19 +47,21 @@ export function UserDetails() {
     if (!userDetails) {
         return <div>No user details yet.</div>
     }
+   
     return (
             <>
-            <div key={userDetails.id}>
-                <p>{userDetails.name}</p>
+            <div className="userHeader" key={userDetails.id}>
+                <h2>{userDetails.name}</h2>
                 <img src={userDetails.profileImageUrl} />
             </div>
+                <h2>Posts by {userDetails.name}</h2>
             <div className="postList">
                 {
                     userDetails.posts.map((post: PostDataObj)=> (
                         <div className="postListDetail" key={post.id}>
                             <img className="postImg" src={post.imageUrl} />
                             <p>{post.message}</p>
-                            <p>Posted on: {post.createdAt}</p>
+                            <p className="postDate">Posted on: {post.createdAt}</p>
                         </div>
                     ))
                 } 
