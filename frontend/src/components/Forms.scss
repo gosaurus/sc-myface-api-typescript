@@ -1,23 +1,41 @@
-$marginAuto: auto;
+@import './defaults.scss';
 
-.createForm {
-    margin: $marginAuto;
+.createUserForm {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+.field {
+    background-color: $darkBg;
+    margin: 0.5em;
+    padding: 1em; 
     display: flex;
-    max-width: 500px;
+    flex-direction: column;
+    text-align: left;
 }
 
 input {
     margin: 10px;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 label {
+    flex-basis: 10%;
+    flex-shrink: 0;
     display: inline-block;
     margin: 10px;
-    text-align: right;
-    width: 150px;
 }
 
 button {
-    margin: 20px auto;
+    margin-left: 9rem;
     display: block;
+}
+
+.usernameRules {
+    font-size: 0.8em;
+    display: block;
+    text-align: center;
 }

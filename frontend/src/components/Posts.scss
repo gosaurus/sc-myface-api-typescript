@@ -1,6 +1,4 @@
-$maxWidth: 1000px;
-$textAlign: center;
-$marginAuto: auto;
+@import './defaults.scss';
 
 .postHeader {
     max-width:$maxWidth;
@@ -21,15 +19,21 @@ $marginAuto: auto;
 }
 
 .postListDetail {
-    max-width:200px;
-    margin:5px;
-    padding:5px;
+    background-color: $darkBg;
+    max-width:33%;
+    min-width: 300px;
+    margin: 1em;
+    padding: 1.5em 1em;
     text-align: center;
+    font-size: 1em;
 }
 
 .postImg {
-    max-width:150px;
-    max-height:150px;
+    max-width: 100%;
+}
+
+.postDate {
+    font-size: 0.8em;
 }
 
 h1 {

@@ -50,27 +50,28 @@ interface User {
         console.log(formData);
     }*/
     return (
-        <div className="createForm">
+        <div className="createUserForm">
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="field">
                     <label htmlFor="name">Name:</label>
-                    <input id="name"  type="text" {...register('name', { required: true })} onChange={handleChange}/>
+                    <input id="name"  type="text" placeholder="Firstname Lastname" {...register('name', { required: true })} onChange={handleChange}/>
                 </div>
                 <div className="field">
                     <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" minLength={5} maxLength={10} {...register('username', { required: true, pattern:/[a-z]/ })} onChange={handleChange}/>
+                    <input type="text" id="username" placeholder="username" minLength={5} maxLength={10} {...register('username', { required: true, pattern:/[a-z]/ })} onChange={handleChange}/>
+                    <br/><span className="usernameRules">Enter a lowercase username between 5-10 characters long.</span>
                 </div>
                 <div className="field">
                     <label htmlFor="email">Email:</label>
-                    <input id="email" type="email" {...register('email', { required: true })} onChange={handleChange}/>
+                    <input id="email" type="email" placeholder="email@domain.com" {...register('email', { required: true })} onChange={handleChange}/>
                 </div>
                 <div className="field">
                     <label htmlFor="profileImageUrl">Profile Image Url:</label>
-                    <input type="url" id="profileImageUrl"value={formData.profileImageUrl}  {...register('profileImageUrl', { required: true })}onChange={handleChange}/>
+                    <input type="url" id="profileImageUrl" placeholder="url to myProfile.jpg" value={formData.profileImageUrl}  {...register('profileImageUrl', { required: true })}onChange={handleChange}/>
             </div>
             <div className="field">
                 <label htmlFor="coverImageUrl">Cover Image Url:</label>
-                <input type="url" id="coverImageUrl"value={formData.coverImageUrl}  {...register('coverImageUrl', { required: true })} onChange={handleChange}/>
+                <input type="url" id="coverImageUrl" placeholder="url to myCoverImage.jpg" value={formData.coverImageUrl}  {...register('coverImageUrl', { required: true })} onChange={handleChange}/>
             </div>
             <button type="submit">Submit</button>
         </form>
