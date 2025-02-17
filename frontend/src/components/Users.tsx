@@ -1,5 +1,6 @@
 import  { useState, useEffect } from 'react';
 import './Users.scss';
+import { Link } from 'react-router-dom';
 
 interface userDataObj {
     id:number,
@@ -26,8 +27,8 @@ useEffect(() => {
             <div className="userList" >
                 {
                     allUsers.map((user:userDataObj)=> (
-                        <div className="userListDet" key={user.id}>
-                            <p>{user.name}</p>
+                        <div className="userListDetail" key={user.id}>
+                            <div className="username"><Link to={"/users/"+user.id}>{user.name}</Link></div>
                             <img src={user.profileImageUrl} />
                         </div>
                     ))

@@ -10,7 +10,26 @@
   max-width:300px;
   margin:5px;
   padding:5px;
+  text-align: center;
 }
+
+.username {
+  background-color: #1A1A1A;
+  padding: 10px;  
+}
+
+.username a,
+.username a:link,
+.username a:active,
+.username a:visited {
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.87)
+}
+
+.username a:hover {
+  color: #535bf2;
+}
+
 
 .userHeader {
   display: block;
