@@ -30,11 +30,11 @@ interface Dislikes {
 
 export function UserDetails() {
     const [userDetails, setUserDetails] = useState<UserDetails>();
-    const { userId } = useParams();
+    const { userId } = useParams<{userId: string}>();
 
 
     useEffect(() => {
-            //TS error until I put in handling for case that userId is undefined??
+            //Why TS emit error until I put in handling for case that userId is undefined?
             const id = userId ? parseInt(userId) : console.error("Invalid userId.");
            
             fetch("http://localhost:3001/users/"+id)

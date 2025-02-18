@@ -1,4 +1,7 @@
-@import './defaults.scss';
+$darkBg: #1A1A1A;
+$textAlign: center;
+$marginAuto: auto;
+$maxWidth: 100%;
 
 .userList {
   display:flex;
@@ -14,7 +17,7 @@
 }
 
 .username {
-  background-color: #1A1A1A;
+  background-color: $darkBg;
   padding: 10px;  
 }
 

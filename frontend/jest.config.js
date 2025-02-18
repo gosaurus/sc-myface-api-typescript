@@ -2,11 +2,13 @@ export default {
   "transform": {
     ".(ts|tsx)": "ts-jest"
   },
+
   "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|svg|ttf|woff|woff2)$": "identity-obj-proxy"
   },
   "moduleFileExtensions": ["ts", "tsx", "js", "json"],
   "testEnvironment": "jsdom",
+  "setupFiles": ["<rootDir>/setupFiles.ts"],
   "setupFilesAfterEnv": [
     "@testing-library/jest-dom"
   ]
