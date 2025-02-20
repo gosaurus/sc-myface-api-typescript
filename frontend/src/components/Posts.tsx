@@ -9,22 +9,28 @@ interface postDataObj {
 }
 export function Posts() {
     const [allPosts, setAllPosts] = useState([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
 useEffect(() => {
         fetch("http://localhost:3001/posts")
         .then(response => (response.json()))
         .then(data => setAllPosts(data.results))
         .catch(error => console.error(error))
-        .finally(() => console.log('Request finished'));
+        .finally(() => setIsLoading(false));
     },[])
 
     if (allPosts.length === 0) {
         return <div>No posts yet.</div>
     }
+
+    if (isLoading) {
+        return <div>Content is loading.</div>
+    }
+
     return (
          <div className="container"> 
             <h2>All posts</h2>
-            <div className="postList" >
+            <div className="postList" data-testid="postList">
                 {
                     allPosts.map((post:postDataObj)=> (
                         <div className="postListDetail" key={post.id}>

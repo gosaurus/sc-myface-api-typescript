@@ -30,22 +30,26 @@ interface Dislikes {
 
 export function UserDetails() {
     const [userDetails, setUserDetails] = useState<UserDetails>();
+    const [isLoading, setIsLoading ] = useState<boolean>(true);
     const { userId } = useParams<{userId: string}>();
 
 
     useEffect(() => {
-            //Why TS emit error until I put in handling for case that userId is undefined?
             const id = userId ? parseInt(userId) : console.error("Invalid userId.");
            
             fetch("http://localhost:3001/users/"+id)
             .then(response => (response.json()))
             .then(data => setUserDetails(data))
             .catch(error => console.error(error))
-            .finally(() => console.log("Request finished"));
+            .finally(() => console.log("Request finished."));
     }, []);
 
     if (!userDetails) {
         return <div>No user details yet.</div>
+    }
+
+    if (isLoading) {
+        return <div>Loading user details.</div>
     }
    
     return (
