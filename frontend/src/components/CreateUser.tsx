@@ -35,7 +35,7 @@ interface User {
         fetch("http://localhost:3001/users/create", {
             method: "POST",
             body: JSON.stringify(formData),
-            headers: { 'Content-Type': 'application/json'}
+            headers: { "Content-Type": "application/json"}
         })
         .then(response => {
             console.log("In 'then' block");
@@ -57,57 +57,77 @@ interface User {
             <form onSubmit={handleSubmit}>
                 <div className="field">
                     <label htmlFor="name">Name:</label>
-                    <input id="name"
-                        name="name"
-                        type="text" 
-                        placeholder="Firstname Lastname" 
-                        onChange={handleChange}
-                        value={formData.name}
-                    />
+                    <div className="input">
+                        <input id="name"
+                            name="name"
+                            type="text" 
+                            placeholder="Firstname Lastname" 
+                            onChange={handleChange}
+                            value={formData.name}
+                            required
+                        />
+                        <span></span>
+                    </div>
                 </div>
                 <div className="field">
                     <label htmlFor="username">Username:</label>
-                    <input type="text"
-                    id="username"
-                    name="username"
-                    placeholder="username"
-                    minLength={5}
-                    maxLength={10}
-                    onChange={handleChange}
-                />
-                <br/>
-                <span className="usernameRules">
-                    Enter a lowercase username between 5-10 characters long.
-                </span>
+                    <div className="input">
+                        <input type="text"
+                            id="username"
+                            name="username"
+                            placeholder="username"
+                            minLength={5}
+                            maxLength={10}
+                            onChange={handleChange}
+                            required
+                        />
+                        <span></span>
+                    </div>
+
+                    <span className="usernameRules">
+                        Enter a lowercase username between 5-10 characters long.
+                    </span>
                 </div>
                 <div className="field">
                     <label htmlFor="email">Email:</label>
-                    <input id="email"
-                        name="email"
-                        type="email"
-                        placeholder="email@domain.com" 
-                        onChange={handleChange}
-                    />
+                    <div className="input">
+                        <input id="email"
+                            name="email"
+                            type="email"
+                            placeholder="email@domain.com" 
+                            onChange={handleChange}
+                            required
+                        />
+                        <span></span>
+                    </div>
                 </div>
                 <div className="field">
                     <label htmlFor="profileImageUrl">Profile Image Url:</label>
-                    <input type="url"
-                        id="profileImageUrl"
-                        name="profileImageUrl"
-                        placeholder="url to myProfile.jpg"
-                        value={formData.profileImageUrl} 
-                        onChange={handleChange}
-                    />
+                    <div className="input">
+                        <input type="url"
+                            id="profileImageUrl"
+                            name="profileImageUrl"
+                            placeholder="url to myProfile.jpg"
+                            value={formData.profileImageUrl} 
+                            onChange={handleChange}
+                            required
+                        />
+                        <span></span>
+                    </div>
                 </div>
                 <div className="field">
-                <label htmlFor="coverImageUrl">Cover Image Url:</label>
-                <input type="url"
-                    id="coverImageUrl"
-                    name="coverImageUrl"
-                    placeholder="url to myCoverImage.jpg"
-                    value={formData.coverImageUrl}
-                    onChange={handleChange}
-                />
+                    <label htmlFor="coverImageUrl">Cover Image Url:</label>
+                    <div className="input">
+                        <input type="url"
+                            id="coverImageUrl"
+                            name="coverImageUrl"
+                            placeholder="url to myCoverImage.jpg"
+                            value={formData.coverImageUrl}
+                            onChange={handleChange}
+                            required
+                        />
+                        <span></span>
+                    </div>
                 </div>
             <button type="submit">Submit</button>
         </form>

@@ -12,10 +12,15 @@ $maxWidth: 100%;
 .field {
     background-color: $darkBg;
     margin: 0.5em;
-    padding: 1em; 
+    padding: 1.2em; 
     display: flex;
     flex-direction: column;
     text-align: left;
+}
+.input {
+    display: flex;
+    flex-direction: row;
+    padding-right: 10px;
 }
 
 input {
@@ -23,6 +28,34 @@ input {
     flex-basis: 0;
     flex-grow: 1;
     flex-shrink: 1;
+    border: 1px solid #646cff;
+}
+
+input + span {
+    position: relative;
+}
+
+input:valid {
+    border: 1px solid green;
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+input:invalid + span::before {
+    position: absolute;
+    right: -20px;
+    top: 5px;
+}
+
+input:invalid + span::before {
+    position: absolute;
+    content: "✖";
+}
+
+input:valid + span::after {
+    content: "✓";
 }
 
 label {
